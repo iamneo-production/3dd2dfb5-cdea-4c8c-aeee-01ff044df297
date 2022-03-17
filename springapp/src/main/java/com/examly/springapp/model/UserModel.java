@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
+
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -39,7 +41,7 @@ public class User {
     private List<OrderModel> ordersList;
 
     User(){}
-    User(String email,String password,String username,String mobileNumber,boolean active,String role,String resetPasswordToken){
+    User(String email,String password,String username,String mobileNumber,boolean active,String role){
         this.email = email;
         this.password = password;
         this.username = username;
@@ -81,7 +83,60 @@ public class User {
         this.cart = cart;
     }
 
-    public void setOrdersList(List<OrderModel> )
+    public void setOrdersList(List<OrderModel> ordersList){
+        this.ordersList = ordersList;
+    }
+
+
+    public String getEmail(){
+        return this.email;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+    public String getUsername(){
+        return this.username;
+    }
+
+    public String getMobileNumber(){
+        return this.mobileNumber;
+    }
+
+    public String getRole(){
+        return this.role;
+    }
+
+    public boolean getActive(){
+        return this.active;
+    }
+
+    public Long getId(){
+        return this.id;
+    }
+
+    public CartModel getCart(){
+        return this.cart;
+    }
+
+    public List<OrderModel> getOrdersList(){
+        return this.ordersList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(username, user.getUsername()) ||
+                Objects.equals(email, user.getEmail()) || Objects.equals(mobileNumber,user.getMobileNumber());
+    }
+}
+
+
+
+
 
 
 
