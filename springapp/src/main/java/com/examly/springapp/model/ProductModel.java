@@ -11,7 +11,8 @@ import javax.persistence.Id;
 @Entity
 @Table(name = "products")
 public class ProductModel {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id;
 
     @Column(name = "product_Id")
@@ -24,16 +25,16 @@ public class ProductModel {
     private String productName;
 
     @Column(name = "price")
-    private double price;
+    private String price;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "quantity")
-    private int quantity;
+    private String quantity;
 
     public ProductModel(){}
-    public ProductModel(String productId,String imageUrl,String productName,double price,String description,int quantity){
+    public ProductModel(String productId,String imageUrl,String productName,String price,String description,String quantity){
         this.productId = productId;
         this.imageUrl = imageUrl;
         this.productName = productName;
@@ -54,7 +55,7 @@ public class ProductModel {
         this.productName = productName;
     }
 
-    public void setPrice(double price){
+    public void setPrice(String price){
         this.price = price;
     }
 
@@ -62,7 +63,7 @@ public class ProductModel {
         this.description = description;
     }
 
-    public void setQuantity(int quantity){
+    public void setQuantity(String quantity){
         this.quantity = quantity;
     }
 
@@ -78,7 +79,7 @@ public class ProductModel {
         return this.productName;
     }
 
-    public double getPrice(){
+    public String getPrice(){
         return this.price;
     }
 
@@ -86,7 +87,7 @@ public class ProductModel {
         return this.description;
     }
 
-    public int getQuantity(){
+    public String getQuantity(){
         return this.quantity;
     }
 }

@@ -12,35 +12,36 @@ import java.util.Objects;
 @Entity
 @Table(name = "users")
 public class UserModel {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="email")
+    @Column(nullable = false, length= 40, unique= true)
     private String email;
 
-    @Column(name="password")
+    @Column(nullable = false, length= 64)
     private String password;
 
-    @Column(name="username")
+    @Column(nullable = false, length= 40)
     private String username;
 
-    @Column(name="mobileNumber")
+    @Column(nullable = false, length= 10)
     private String mobileNumber;
 
-    @Column(name="active")
+    @Column()
     private boolean active;
 
-    @Column(name="role")
+    @Column(nullable = false)
     private String role;
      
-    @Column(name="cart")
+    @Column()
     private CartModel cart;
 
-    @Column(name="ordersList")
+    @Column()
     private List<OrderModel> ordersList;
 
-    UserModel(){}
-    UserModel(String email,String password,String username,String mobileNumber,boolean active,String role,CartModel cart,List<OrderModel> ordersList){
+    public UserModel(){}
+    public UserModel(String email,String password,String username,String mobileNumber,boolean active,String role,CartModel cart,List<OrderModel> ordersList){
         this.email = email;
         this.password = password;
         this.username = username;
@@ -123,13 +124,13 @@ public class UserModel {
         return this.ordersList;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof UserModel)) return false;
-        UserModel user = (UserModel) o;
-        return Objects.equals(username, user.getUsername()) ||
-                Objects.equals(email, user.getEmail()) || Objects.equals(mobileNumber,user.getMobileNumber());
-    }
+    // @Override
+    // public boolean equals(Object o) {
+    //     if (this == o) return true;
+    //     if (!(o instanceof UserModel)) return false;
+    //     UserModel user = (UserModel) o;
+    //     return Objects.equals(username, user.getUsername()) ||
+    //             Objects.equals(email, user.getEmail()) || Objects.equals(mobileNumber,user.getMobileNumber());
+    // }
     
 }
