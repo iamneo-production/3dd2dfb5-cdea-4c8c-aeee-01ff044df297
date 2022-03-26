@@ -17,6 +17,6 @@ import com.examly.springapp.model.UserModel;
  public UserModel findUserByEmail(String Email);
 
  @Async
- @Query("select u.user_role,u.emailId from UserModel u where u.emailId= emailId")
- public UserModel findByEmailAndUserRole(@Param("user_role") String user_role,@Param("email") String email);
+ @Query("select u.role,u.email from UserModel u where u.email= email")
+ public UserModel findByEmailAndRole(@Param("role") String role,@Param("email") String email);
 }
