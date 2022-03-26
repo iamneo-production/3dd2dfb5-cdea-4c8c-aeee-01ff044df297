@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
 
 import java.util.List;
 import java.util.Objects;
@@ -34,10 +38,12 @@ public class UserModel {
     @Column(nullable = false)
     private String role;
      
-    @Column()
+    // @Column()
+    @OneToOne(cascade = CascadeType.ALL)
     private CartModel cart;
 
-    @Column()
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
     private List<OrderModel> ordersList;
 
     public UserModel(){}

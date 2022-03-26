@@ -43,7 +43,7 @@ public class UserService {
     }
 
     public UserModel fetchByEmailAndUserRole(String email,String user_role){
-        return UserRepository.findByEmailAndUserRole(email,user_role);
+        return UserRepository.findByEmailAndRole(email,user_role);
     }
     
 	
