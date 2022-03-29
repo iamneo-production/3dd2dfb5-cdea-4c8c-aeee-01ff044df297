@@ -43,14 +43,6 @@ public class CartModel {
         this.Quantity = Quantity;
         this.Price = Price;
     }
-
-    public CartModel(String cartItemID,UserModel userId,String ProductName,int Quantity,String Price){
-        this.cartItemID = cartItemID;
-        this.userId = userId;
-        this.ProductName = ProductName;
-        this.Quantity = Quantity;
-        this.Price = Price;
-    }
     
     public void setCartItemId(String cartItemID){
         this.cartItemID = cartItemID;
