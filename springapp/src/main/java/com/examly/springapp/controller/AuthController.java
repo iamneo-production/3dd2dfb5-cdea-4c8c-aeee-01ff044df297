@@ -23,6 +23,20 @@ public class AuthController  {
 	
 	@Autowired
 	private UserService service;
+
+	@PostMapping("/signup")
+	public String saveUser(@RequestBody UserModel user) throws Exception {
+		String tempEmail = user.getEmail();
+		if(tempEmail != null && !"".equals(tempEmail)) {
+			UserModel userObj= service.fetchUserByEmail(tempEmail);
+			if(userObj != null) {
+				throw new Exception("Email already exist");
+			}
+		}
+		user.setRole("user");
+		service.saveUser(user);
+		return ("signed up sucessfully");
+	}
 	
 	@CrossOrigin(origins="https://8081-cefcccadbaddebfdaffdacedbbebcbf.examlyiopb.examly.io")
 	@PostMapping("/login")
@@ -39,7 +53,7 @@ public class AuthController  {
 			userobj = service.fetchByEmailAndPassword (tempEmail, tempPass); 
 		}
 		if(userobj == null){
-			throw new Exception("Bad Credentials");
+			throw new Exception("Cannot find the user");
 		}
 		
 		return userobj;
