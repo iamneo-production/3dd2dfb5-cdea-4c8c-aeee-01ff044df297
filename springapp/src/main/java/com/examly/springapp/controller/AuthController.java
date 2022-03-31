@@ -38,7 +38,7 @@ public class AuthController  {
 		return ("signed up sucessfully");
 	}
 	
-	@CrossOrigin(origins="https://8081-cefcccadbaddebfdaffdacedbbebcbf.examlyiopb.examly.io")
+	@CrossOrigin(origins="https://8081-abcecdbaddefbbfabdfdcbaddedebfabe.examlyiopb.examly.io/")
 	@PostMapping("/login")
 	public UserModel loginUser (@RequestBody UserModel user) throws Exception {
 

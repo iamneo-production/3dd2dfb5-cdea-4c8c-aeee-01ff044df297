@@ -23,12 +23,12 @@ public class CartController{
     private CartService cartService;
 
     @PostMapping("/home/{id}")
-    public CartModel addCarts(@RequestBody CartModel cart){
-		return cartService.saveCart(cart);
+    public CartModel addCarts(@RequestBody int Quantity, @PathVariable int id){
+		return cartService.addToCart(Quantity,id);
 	}
 
     @GetMapping("/cart/{id}")
-	public List<CartModel> getAllCartItems() {
+	public List<CartModel> getAllCartItems(@PathVariable int id) {
 		return cartService.getCarts();
 	}
 

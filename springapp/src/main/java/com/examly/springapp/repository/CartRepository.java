@@ -7,8 +7,8 @@ import com.examly.springapp.model.CartModel;
 
 
 @Repository
-public interface CartRepository extends JpaRepository<CartModel, Long>{
-
+public interface CartRepository extends JpaRepository<CartModel, Integer>{
+    public List<CartModel> findByUserId(int id);
     public void deleteById(int id);
 
 }
