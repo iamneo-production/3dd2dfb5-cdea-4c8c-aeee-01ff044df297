@@ -1,0 +1,12 @@
+
+table{
+    align-items: center;
+}
+th, td {
+    padding: 30px;
+    text-align: left;
+    font-size:30px
+  }
+tr{
+  border-bottom: 1px solid black;
+}
