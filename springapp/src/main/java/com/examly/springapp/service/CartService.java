@@ -13,12 +13,23 @@ public class CartService {
     @Autowired
 	private CartRepository cartRepository;
 
-    public CartModel saveCart(CartModel cart) {
-		return cartRepository.save(cart);
+    public CartModel saveCart(int Quantity, int id) {
+		ProductModel product = productService.getProductById(id);
+        if(product == null) {
+            return null;
+        }
+
+        CartModel cartItem = new CartModel();
+        cartItem.setProductName(product.getProductName());
+        cartItem.setQuantity(quantity);
+        cartItem.setPrice(quantity * product.getPrice());
+        cartItem.setUserId(2L);
+
+        return cartRepository.save(cartItem);
 	}
 
-    public List<CartModel> getCarts(){
-		return cartRepository.findAll();
+    public List<CartModel> getCarts(int id){
+		return cartRepository.findByUserId(id);
 	}
 
     public void deleteById(int id) {
