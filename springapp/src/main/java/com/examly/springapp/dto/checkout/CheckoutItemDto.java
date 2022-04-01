@@ -1,12 +1,21 @@
+package com.examly.springapp.dto.checkout;
+
 public class CheckoutItemDto {
 
     private String productName;
-    private int quantity;
+    private int  quantity;
     private double price;
     private long productId;
     private int userId;
 
-    public CheckoutItemDto() {
+    public CheckoutItemDto() {}
+
+    public CheckoutItemDto(String productName, int quantity, double price, long productId, int userId) {
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
+        this.productId = productId;
+        this.userId = userId;
     }
 
     public String getProductName() {
@@ -25,21 +34,11 @@ public class CheckoutItemDto {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
+    public double getPrice(){return price;}
 
     public int getUserId() {
         return userId;
@@ -48,4 +47,15 @@ public class CheckoutItemDto {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long id) {
+        this.productId = id;
+    }
+
+
+
 }
