@@ -42,7 +42,7 @@ public class OrderController {
         Session session = orderService.createSession(checkoutItemDtoList);
         StripeResponse stripeResponse = new StripeResponse(session.getId());
         // send the stripe session id in response
-        return new ResponseEntity<StripeResponse>(stripeResponse, HttpStatus.OK);
+        return new ResponseEntity<>(stripeResponse, HttpStatus.OK);
     }
 
     // place order after checkout
