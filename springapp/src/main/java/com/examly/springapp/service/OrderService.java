@@ -8,9 +8,9 @@ import com.examly.springapp.dto.cart.CartDto;
 import com.examly.springapp.dto.cart.CartItemDto;
 import com.examly.springapp.dto.checkout.CheckoutItemDto;
 import com.examly.springapp.exceptions.OrderNotFoundException;
-import com.examly.springapp.model.Order;
+import com.examly.springapp.model.OrderModel;
 import com.examly.springapp.model.OrderItem;
-import com.examly.springapp.model.User;
+import com.examly.springapp.model.UserModel;
 import com.examly.springapp.repository.OrderItemsRepository;
 import com.examly.springapp.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,14 +93,14 @@ public class OrderService {
         return Session.create(params);
     }
 
-    public void placeOrder(User user, String sessionId) {
+    public void placeOrder(UserModel user, String sessionId) {
         // first let get cart items for the user
         CartDto cartDto = cartService.listCartItems(user);
 
         List<CartItemDto> cartItemDtoList = cartDto.getcartItems();
 
         // create the order and save it
-        Order newOrder = new Order();
+        OrderModel newOrder = new OrderModel();
         newOrder.setCreatedDate(new Date());
         newOrder.setSessionId(sessionId);
         newOrder.setUser(user);
@@ -122,13 +122,13 @@ public class OrderService {
         cartService.deleteUserCartItems(user);
     }
 
-    public List<Order> listOrders(User user) {
+    public List<OrderModel> listOrders(UserModel user) {
         return orderRepository.findAllByUserOrderByCreatedDateDesc(user);
     }
 
 
-    public Order getOrder(Integer orderId) throws OrderNotFoundException {
-        Optional<Order> order = orderRepository.findById(orderId);
+    public OrderModel getOrder(Integer orderId) throws OrderNotFoundException {
+        Optional<OrderModel> order = orderRepository.findById(orderId);
         if (order.isPresent()) {
             return order.get();
         }

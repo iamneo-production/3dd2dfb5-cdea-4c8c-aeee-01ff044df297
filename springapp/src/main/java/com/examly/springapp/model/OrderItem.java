@@ -28,7 +28,7 @@ public class OrderItem {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private Order order;
+    private OrderModel order;
 
     @OneToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
@@ -36,7 +36,7 @@ public class OrderItem {
 
     public OrderItem(){}
 
-    public OrderItem(Order order, @NotNull Product product, @NotNull int quantity, @NotNull double price) {
+    public OrderItem(OrderModel order, @NotNull Product product, @NotNull int quantity, @NotNull double price) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
@@ -77,11 +77,11 @@ public class OrderItem {
         this.createdDate = createdDate;
     }
 
-    public Order getOrder() {
+    public OrderModel getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(OrderModel order) {
         this.order = order;
     }
 }

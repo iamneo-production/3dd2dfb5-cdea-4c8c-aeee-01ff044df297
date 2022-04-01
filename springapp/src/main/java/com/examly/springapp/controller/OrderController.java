@@ -8,8 +8,8 @@ import com.examly.springapp.dto.checkout.CheckoutItemDto;
 import com.examly.springapp.dto.checkout.StripeResponse;
 import com.examly.springapp.exceptions.AuthenticationFailException;
 import com.examly.springapp.exceptions.OrderNotFoundException;
-import com.examly.springapp.model.Order;
-import com.examly.springapp.model.User;
+import com.examly.springapp.model.OrderModel;
+import com.examly.springapp.model.UserModel;
 import com.examly.springapp.service.AuthenticationService;
 import com.examly.springapp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +42,7 @@ public class OrderController {
         Session session = orderService.createSession(checkoutItemDtoList);
         StripeResponse stripeResponse = new StripeResponse(session.getId());
         // send the stripe session id in response
-        return new ResponseEntity<StripeResponse>(stripeResponse, HttpStatus.OK);
+        return new ResponseEntity<>(stripeResponse, HttpStatus.OK);
     }
 
     // place order after checkout
@@ -52,7 +52,7 @@ public class OrderController {
         // validate token
         authenticationService.authenticate(token);
         // retrieve user
-        User user = authenticationService.getUser(token);
+        UserModel user = authenticationService.getUser(token);
         // place the order
         orderService.placeOrder(user, sessionId);
         return new ResponseEntity<>(new ApiResponse(true, "Order has been placed"), HttpStatus.CREATED);
@@ -64,9 +64,9 @@ public class OrderController {
         // validate token
         authenticationService.authenticate(token);
         // retrieve user
-        User user = authenticationService.getUser(token);
+        UserModel user = authenticationService.getUser(token);
         // get orders
-        List<Order> orderDtoList = orderService.listOrders(user);
+        List<OrderModel> orderDtoList = orderService.listOrders(user);
 
         return new ResponseEntity<>(orderDtoList, HttpStatus.OK);
     }
@@ -79,7 +79,7 @@ public class OrderController {
         // validate token
         authenticationService.authenticate(token);
         try {
-            Order order = orderService.getOrder(id);
+            OrderModel order = orderService.getOrder(id);
             return new ResponseEntity<>(order,HttpStatus.OK);
         }
         catch (OrderNotFoundException e) {
