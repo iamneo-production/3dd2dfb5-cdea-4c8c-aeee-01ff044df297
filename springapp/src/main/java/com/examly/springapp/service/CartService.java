@@ -27,13 +27,13 @@ public class CartService {
         this.cartRepository = cartRepository;
     }
 
-    public void addToCart(AddToCartDto addToCartDto, Product product, User user){
+    public void addToCart(AddToCartDto addToCartDto, ProductModel product, UserModel user){
         Cart cart = new Cart(product, addToCartDto.getQuantity(), user);
         cartRepository.save(cart);
     }
 
 
-    public CartDto listCartItems(User user) {
+    public CartDto listCartItems(UserModel user) {
         List<Cart> cartList = cartRepository.findAllByUserOrderByCreatedDateDesc(user);
         List<CartItemDto> cartItems = new ArrayList<>();
         for (Cart cart:cartList){
@@ -53,26 +53,26 @@ public class CartService {
     }
 
 
-    public void updateCartItem(AddToCartDto cartDto, User user,Product product){
+    public void updateCartItem(AddToCartDto cartDto){
         Cart cart = cartRepository.getOne(cartDto.getId());
         cart.setQuantity(cartDto.getQuantity());
         cart.setCreatedDate(new Date());
         cartRepository.save(cart);
     }
 
-    public void deleteCartItem(int id,int userId) throws CartItemNotExistException {
+    public void deleteCartItem(int id) throws CartItemNotExistException {
         if (!cartRepository.existsById(id))
             throw new CartItemNotExistException("Cart id is invalid : " + id);
         cartRepository.deleteById(id);
 
     }
 
-    public void deleteCartItems(int userId) {
+    public void deleteCartItems() {
         cartRepository.deleteAll();
     }
 
 
-    public void deleteUserCartItems(User user) {
+    public void deleteUserCartItems(UserModel user) {
         cartRepository.deleteByUser(user);
     }
 }

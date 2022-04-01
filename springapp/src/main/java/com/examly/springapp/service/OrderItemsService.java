@@ -8,7 +8,7 @@ import com.examly.springapp.dto.cart.CartDto;
 import com.examly.springapp.dto.cart.CartItemDto;
 import com.examly.springapp.dto.checkout.CheckoutItemDto;
 import com.examly.springapp.exceptions.OrderNotFoundException;
-import com.examly.springapp.model.Order;
+import com.examly.springapp.model.OrderModel;
 import com.examly.springapp.model.OrderItem;
 import com.examly.springapp.model.User;
 import com.examly.springapp.repository.OrderItemsRepository;
@@ -100,7 +100,7 @@ public class OrderService {
         List<CartItemDto> cartItemDtoList = cartDto.getcartItems();
 
         // create the order and save it
-        Order newOrder = new Order();
+        OrderModel newOrder = new OrderModel();
         newOrder.setCreatedDate(new Date());
         newOrder.setSessionId(sessionId);
         newOrder.setUser(user);
@@ -122,13 +122,13 @@ public class OrderService {
         cartService.deleteUserCartItems(user);
     }
 
-    public List<Order> listOrders(User user) {
+    public List<OrderModel> listOrders(User user) {
         return orderRepository.findAllByUserOrderByCreatedDateDesc(user);
     }
 
 
-    public Order getOrder(Integer orderId) throws OrderNotFoundException {
-        Optional<Order> order = orderRepository.findById(orderId);
+    public OrderModel getOrder(Integer orderId) throws OrderNotFoundException {
+        Optional<OrderModel> order = orderRepository.findById(orderId);
         if (order.isPresent()) {
             return order.get();
         }
