@@ -74,10 +74,6 @@ public class AuthController  {
 
 
 
-
-
-
-
 // package com.examly.springapp.controller; 
 
 // import org.springframework.beans.factory.annotation.Autowired;

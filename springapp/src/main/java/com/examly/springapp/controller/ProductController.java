@@ -29,7 +29,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/admin/productEdit/{id}")
-	public ProductModel getProductById(@PathVariable int id) {
+	public ProductModel getProductById(@PathVariable String id) {
 		return productService.getProductById(id);
 	}
 	
@@ -44,15 +44,21 @@ public class ProductController {
     }
 	
 	@DeleteMapping("/admin/delete/{id}")
-	public String deleteProductById(@PathVariable int id) {
+	public void deleteProductById(@PathVariable String id) {
 		productService.deleteById(id);
-		return "Product Deleted";
 	}
 	
 	@PutMapping("/admin/productEdit/{id}")
-	public ProductModel updateProduct(@PathVariable int id, @RequestBody ProductModel product) {
-		return productService.updateProduct(id,product);
+	public ProductModel productSaveEdit(@RequestBody ProductModel product,@PathVariable String id) {
+		return productService.productSaveEdit(product,id);
 	}
+    
+	@GetMapping("/home/getProduct/{id}")
+	public ProductModel getParticularProduct(@PathVariable String id) {
+		return productService.getProductById(id);
+	}
+
+
 }
 
 

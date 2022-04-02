@@ -14,35 +14,32 @@ import javax.persistence.Id;
 public class OrderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column
+	@Column(name="orderId",unique=true,nullable=false)
     private String orderId;
 
-    @Column
+    @Column(name="userId")
     private String userId;
 
-    @Column
+    @Column(name="productName")
     private String ProductName;
 
-    @Column
+    @Column(name="quantity")
     private int quantity;
 
-    @Column
+    @Column(name="totalPrice")
     private String totalPrice;
 
-    @Column
+    @Column(name="status")
     private String Status;
 
-    @Column
+    @Column(name="price")
     private String Price;
 
     public OrderModel(){}
-    public OrderModel(int id,String orderId,String userId,String productName,int quantity,String totalPrice,String Status,String Price){
-        this.id = id;
+    public OrderModel(String orderId,String userId,String ProductName,int quantity,String totalPrice,String Status,String Price){
         this.orderId = orderId;
         this.userId = userId;
-        this.productName = productName;
+        this.ProductName = ProductName;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.Status = Status;
@@ -64,8 +61,8 @@ public class OrderModel {
 	public String getProductName() {
 		return ProductName;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setProductName(String ProductName) {
+		this.ProductName = ProductName;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -82,14 +79,14 @@ public class OrderModel {
 	public String getStatus() {
 		return Status;
 	}
-	public void setStatus(String status) {
-		Status = status;
+	public void setStatus(String Status) {
+		this.Status = Status;
 	}
 	public String getPrice() {
 		return Price;
 	}
-	public void setPrice(String price) {
-		Price = price;
+	public void setPrice(String Price) {
+		this.Price = Price;
 	}
     
 }
