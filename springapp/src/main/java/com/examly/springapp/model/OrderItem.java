@@ -32,11 +32,11 @@ public class OrderItem {
 
     @OneToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
+    private ProductModel product;
 
     public OrderItem(){}
 
-    public OrderItem(OrderModel order, @NotNull Product product, @NotNull int quantity, @NotNull double price) {
+    public OrderItem(OrderModel order, @NotNull ProductModel product, @NotNull int quantity, @NotNull double price) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
@@ -44,11 +44,11 @@ public class OrderItem {
         this.createdDate = new Date();
     }
 
-    public Product getProduct() {
+    public ProductModel getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductModel product) {
         this.product = product;
     }
 
