@@ -18,7 +18,8 @@ public class ProductService {
 	}
 	
 	public ProductModel saveProduct(ProductModel product) {
-		return productRepository.save(product);
+		ProductModel addingProduct = productRepository.save(product);
+		return addingProduct;
 	}
 	
 	// public List<ProductModel> saveProducts(List<ProductModel> products){
@@ -26,26 +27,21 @@ public class ProductService {
 	// }
 	
 	public List<ProductModel> getProducts(){
-		return productRepository.findAll();
+		List<ProductModel> products = new ArrayList<>();
+		productRepository.findAll().forEach(products :: add);
+		return products;
 	}
 	
-	public ProductModel getProductById(int id){
+	public ProductModel getProductById(String id){
 		return productRepository.findById(id).orElse(null);
 	}
 	
-	public void deleteById(int id) {
+	public void deleteById(String id) {
 		productRepository.deleteById(id);
 	}
 	
-	public ProductModel updateProduct(int id, ProductModel productModel) {
-		ProductModel existingProduct = productRepository.findById(id).orElse(null);
-		existingProduct.setProductId(productModel.getProductId());	
-		existingProduct.setImageUrl(productModel.getImageUrl());
-		existingProduct.setProductName(productModel.getProductName());
-		existingProduct.setPrice(productModel.getPrice());
-		existingProduct.setDescription(productModel.getDescription());
-		existingProduct.setQuantity(productModel.getQuantity());
-		return productRepository.save(existingProduct);
+	public ProductModel productSaveEdit(ProductModel product,String id) {
+		return productRepository.save(product);
 	}
     
 }

@@ -13,15 +13,13 @@ import javax.persistence.Id;
 public class ProductModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private int id;
-
-    @Column(name = "product_Id")
+    @Column(name = "productId")
     private String productId;
 
-    @Column(name = "image_Url")
+    @Column(name = "imageUrl")
     private String imageUrl;
 
-    @Column(name = "product_Name")
+    @Column(name = "productName")
     private String productName;
 
     @Column(name = "price")
@@ -68,27 +66,27 @@ public class ProductModel {
     }
 
     public String getProductId(){
-        return this.productId;
+        return productId;
     }
 
     public String getImageUrl(){
-        return this.imageUrl;
+        return imageUrl;
     }
 
     public String getProductName(){
-        return this.productName;
+        return productName;
     }
 
     public String getPrice(){
-        return this.price;
+        return price;
     }
 
     public String getDescription(){
-        return this.description;
+        return description;
     }
 
     public String getQuantity(){
-        return this.quantity;
+        return quantity;
     }
 }
 

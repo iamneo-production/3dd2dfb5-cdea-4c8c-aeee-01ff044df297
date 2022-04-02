@@ -23,19 +23,18 @@ public class CartController{
     private CartService cartService;
 
     @PostMapping("/home/{id}")
-    public CartModel addCarts(@RequestBody int Quantity, @PathVariable int id){
-		return cartService.addToCart(Quantity,id);
+    public CartModel addCarts(@RequestBody CartModel cart){
+		return cartService.addToCart(cart);
 	}
 
     @GetMapping("/cart/{id}")
-	public List<CartModel> getAllCartItems(@PathVariable int id) {
-		return cartService.getCarts();
+	public List<CartModel> getAllCartItems(@PathVariable String id) {
+		return cartService.getCarts(id);
 	}
 
-    @DeleteMapping("/cart/{id}")
-	public String deleteCartById(@PathVariable int id) {
+    @DeleteMapping("/cart/delete/{id}")
+	public void deleteCartById(@PathVariable String id) {
 		cartService.deleteById(id);
-		return "CartDeleted";
 	}
 
 }

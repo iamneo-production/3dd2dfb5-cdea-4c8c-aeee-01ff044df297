@@ -22,10 +22,26 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/saveOrder/{id}")
-    public OrderModel saveProduct(@PathVariable int id){
-
-
+    @GetMapping("/orders")
+    public List<OrderModel> getUserProducts(@PathVariable String id){
+        return orderService.getUserProducts(id);
     } 
+
+    @PostMapping("/saveOrder")
+    public void saveProduct(@PathVariable String id){
+        orderService.saveProduct(id);
+    }
+
+    @PostMapping("/placeOrder")
+    public void placeOrder(@RequestBody OrderModel order){
+        orderService.placeOrder(order);
+    }
+
+    @GetMapping("/admin/orders")
+    public List<OrderModel> getAllUsersOrders(){
+        return orderService.getAllUsersOrders();
+    }
+
+
 }
 

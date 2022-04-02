@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Async;
 import com.examly.springapp.model.UserModel;
 
 @Repository
- public interface UserRepository extends JpaRepository<UserModel, Long>{
+ public interface UserRepository extends JpaRepository<UserModel, String>{
     
 
  public UserModel findByEmailAndPassword(String email,String password);

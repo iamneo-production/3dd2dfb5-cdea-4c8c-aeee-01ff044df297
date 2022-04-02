@@ -6,8 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Table;
-import javax.persistence.OneToOne;
-import javax.persistence.CascadeType;
 
 
 
@@ -17,25 +15,26 @@ public class CartModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id", unique = true)
+    private String id;
 
-     @Column
+    @Column(name = "productId")
     private String cartItemID;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserModel userId;
+    @Column(name = "userId")
+    private String userId;
 
-    @Column
+    @Column(name = "productName")
     private String ProductName;
 
-    @Column
+    @Column(name = "quantity")
     private int Quantity;
 
-    @Column
+    @Column(name = "price")
     private String Price;
 
     public CartModel(){}
-    public CartModel(int id,String cartItemID,UserModel userId,String ProductName,int Quantity,String Price){
+    public CartModel(String id,String cartItemID,String userId,String ProductName,int Quantity,String Price){
         this.id = id;
         this.cartItemID = cartItemID;
         this.userId = userId;
@@ -43,12 +42,16 @@ public class CartModel {
         this.Quantity = Quantity;
         this.Price = Price;
     }
+
+    public void setId(String id){
+        this.id = id;
+    }
     
     public void setCartItemId(String cartItemID){
         this.cartItemID = cartItemID;
     }
 
-    public void setUserId(UserModel userId){
+    public void setUserId(String userId){
         this.userId = userId;
     }
 
@@ -64,24 +67,28 @@ public class CartModel {
         this.Price = Price;
     }
 
-    public String getCartItemId(){
-        return this.cartItemID;
+    public String getId(){
+        return id; 
     }
 
-    public UserModel getUserId(){
-        return this.userId;
+    public String getCartItemId(){
+        return cartItemID;
+    }
+
+    public String getUserId(){
+        return userId;
     }
 
     public String getProductName(){
-        return this.ProductName;
+        return ProductName;
     }
 
     public int getQuantity(){
-        return this.Quantity;
+        return Quantity;
     }
 
     public String getPrice(){
-        return this.Price;
+        return Price;
     }
 
 

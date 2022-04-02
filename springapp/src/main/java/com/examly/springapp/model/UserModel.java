@@ -6,61 +6,59 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.JoinColumn;
-import javax.persistence.CascadeType;
+// import javax.persistence.OneToOne;
+// import javax.persistence.OneToMany;
+// import javax.persistence.JoinColumn;
+// import javax.persistence.CascadeType;
 
-import java.util.List;
-import java.util.Objects;
+// import java.util.List;
+// import java.util.Objects;
 @Entity
 @Table(name = "users")
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, length= 40, unique= true)
+    @Column(name = "email",nullable = false, unique= true)
     private String email;
 
-    @Column(nullable = false, length= 64)
+    @Column(name = "password",nullable = false)
     private String password;
 
-    @Column(nullable = false, length= 40)
+    @Column(name = "username",nullable = false)
     private String username;
 
-    @Column(nullable = false, length= 10)
+    @Column(name = "mobileNumber",nullable = false)
     private String mobileNumber;
 
-    @Column()
+    @Column(name = "active")
     private boolean active;
 
-    @Column(nullable = false)
+    @Column(name = "role",nullable = false)
     private String role;
      
     // @Column()
-    @OneToOne(cascade = CascadeType.ALL)
-    private CartModel cart;
+    // @OneToOne(cascade = CascadeType.ALL)
+    // private CartModel cart;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
-    private List<OrderModel> ordersList;
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "order_id")
+    // private List<OrderModel> ordersList;
 
     public UserModel(){}
-    public UserModel(String email,String password,String username,String mobileNumber,boolean active,String role,CartModel cart,List<OrderModel> ordersList){
+    public UserModel(String email,String password,String username,String mobileNumber,boolean active,String role){
         this.email = email;
         this.password = password;
         this.username = username;
         this.active = active;
         this.mobileNumber = mobileNumber;
         this.role = role;
-        this.cart = cart;
-        this.ordersList = ordersList;
+        // this.cart = cart;
+        // this.ordersList = ordersList;
     }
     
-    public void setId(Long id){
-        this.id = id;
-    }
+    // public void setId(Long id){
+    //     this.id = id;
+    // }
     public void setEmail(String email){
         this.email = email;
     }
@@ -85,58 +83,49 @@ public class UserModel {
         this.active = active;
     }
 
-    public void setCart(CartModel cart){
-        this.cart = cart;
-    }
+    // public void setCart(CartModel cart){
+    //     this.cart = cart;
+    // }
 
-    public void setOrdersList(List<OrderModel> ordersList){
-        this.ordersList = ordersList;
-    }
+    // public void setOrdersList(List<OrderModel> ordersList){
+    //     this.ordersList = ordersList;
+    // }
 
 
     public String getEmail(){
-        return this.email;
+        return email;
     }
 
     public String getPassword(){
-        return this.password;
+        return password;
     }
 
     public String getUsername(){
-        return this.username;
+        return username;
     }
 
     public String getMobileNumber(){
-        return this.mobileNumber;
+        return mobileNumber;
     }
 
     public String getRole(){
-        return this.role;
+        return role;
     }
 
     public boolean getActive(){
-        return this.active;
+        return active;
     }
 
-    public Long getId(){
-        return this.id;
-    }
-
-    public CartModel getCart(){
-        return this.cart;
-    }
-
-    public List<OrderModel> getOrdersList(){
-        return this.ordersList;
-    }
-
-    // @Override
-    // public boolean equals(Object o) {
-    //     if (this == o) return true;
-    //     if (!(o instanceof UserModel)) return false;
-    //     UserModel user = (UserModel) o;
-    //     return Objects.equals(username, user.getUsername()) ||
-    //             Objects.equals(email, user.getEmail()) || Objects.equals(mobileNumber,user.getMobileNumber());
+    // public Long getId(){
+    //     return this.id;
     // }
-    
+
+    // public CartModel getCart(){
+    //     return this.cart;
+    // }
+
+    // public List<OrderModel> getOrdersList(){
+    //     return this.ordersList;
+    // }
+
 }
