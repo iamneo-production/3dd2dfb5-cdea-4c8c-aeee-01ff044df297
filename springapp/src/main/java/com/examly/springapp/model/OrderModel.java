@@ -31,7 +31,7 @@ public class OrderModel {
     @ManyToOne()
     @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private UserModel user;
 
 
 
@@ -76,7 +76,7 @@ public class OrderModel {
         this.sessionId = sessionId;
     }
 
-    public User getUser() {
+    public UserModel getUser() {
         return user;
     }
 
