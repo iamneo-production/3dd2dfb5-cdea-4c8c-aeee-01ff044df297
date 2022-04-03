@@ -80,7 +80,7 @@ public class OrderModel {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserModel user) {
         this.user = user;
     }
 }
