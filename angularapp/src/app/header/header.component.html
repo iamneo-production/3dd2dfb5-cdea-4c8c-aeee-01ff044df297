@@ -1,10 +1,11 @@
-<div class="topnav">
-    <a>Crop Byte</a>
-    <div class="navcontent">
-    <a class="active" href="#home">Home</a>
-    <a href="#cart">Cart</a>
-    <a href="#myorders">MyOrders</a>
-    <a href="#home">Logout</a>
-    </div>
-
+<mat-toolbar #header color="primary" class="mat-elevation-z6 navBarContainer">
+  <div>
+    <span class="title">CropByte</span>
   </div>
+  <div>
+    <a routerLink="/home" mat-button class="home thing" #homeButton>Home</a>
+    <a routerLink="../cart" mat-button class="cart thing" #cartButton>Cart</a>
+    <a routerLink="../orders" mat-button class="myOrder thing" #myOrdersButton>MyOrders</a>
+    <a (click)="logout()" mat-button color="warn" class="logout thing" #logoutButton>Logout</a>
+  </div>
+</mat-toolbar>
