@@ -1,0 +1,24 @@
+<div class="mainContainer">
+    <div #loginBox class="loginConatiner">
+        <div class="heading">Login</div>
+        <form #loginForm = "ngForm" (ngSubmit)="formSubmit()">
+            <div>
+                <mat-form-field appearance="outline" class="email">
+                  <mat-label>Email</mat-label>
+                  <input #email type="email" name="email" matInput required [(ngModel)]="user.email"/>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline" class="password">
+                    <mat-label>Password</mat-label>
+                    <input #password type="password" name="password" placeholder="" matInput required [(ngModel)]="user.password"/>
+                  </mat-form-field>
+              </div>
+              <button #loginButton class="loginButton" mat-raised-button color="primary">Login</button>
+              <p class="signupText">
+                  New User?
+                  <a routerLink="signup" #signupLink class="signupLink">Sign Up</a>
+              </p>
+        </form>
+    </div>
+</div>
