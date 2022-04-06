@@ -1,0 +1,42 @@
+<div class="mainContainer">
+    <div #signupBox class="loginContainer">
+        <div class="heading">Sign Up</div>
+        <form #signupForm = "ngForm" (ngSubmit)="formSubmit()">
+            <div>
+                <mat-form-field appearance="outline" class="email">
+                    <mat-label>Enter email</mat-label>
+                    <input #email type="email" name="email" matInput required [(ngModel)]="user.email"/>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="userName">
+                    <mat-label>Enter Username</mat-label>
+                    <input #username type="text" matInput name="userName" required [(ngModel)]="user.userName"/>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="mobileNumber">
+                    <mat-label>Enter Mobile number</mat-label>
+                    <input #mobilenumber type="text" matInput name="mobileNo" required [(ngModel)]="user.mobileNo"/>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="password">
+                    <mat-label>Password</mat-label>
+                    <input #password type="password" name="password" placeholder="" matInput required [(ngModel)]="user.password"/>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="confirmPassword">
+                    <mat-label>Confirm Password</mat-label>
+                    <input #confirmPassword type="password" name="confirmPassword" matInput required [(ngModel)]="reEnteredpassword"/>
+                  </mat-form-field>
+            </div>
+            <button #submitButton class="signupButton" mat-raised-button color="primary">Submit</button>
+        </form>
+        <p class="signupText">
+            Already a user?
+            <a routerLink="" #signinLink class="loginLink">Login</a>
+        </p>
+    </div>
+</div>
