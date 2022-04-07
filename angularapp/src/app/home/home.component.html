@@ -1,0 +1,16 @@
+<div>
+    <app-header></app-header>
+</div>
+<div class="mainContainer">
+    <div #homePage>
+        <div class="gridContainer">
+            <mat-card class="card" *ngFor="let product of allProducts">
+                <mat-card-header>
+                    <mat-card-title class="cardTitle">{{product.productName}}</mat-card-title>
+                </mat-card-header>
+                <img src="{{product.imageUrl}}" alt="Product Image" (click)="productDetails(product.productName)">
+                <mat-card-footer class="cardPrice">Rs.{{product.price}}/kg</mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
