@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/Login/login.service';
+import { LoginService } from '../service/Login/login.service';
 
 @Component({
   selector: 'app-login',
