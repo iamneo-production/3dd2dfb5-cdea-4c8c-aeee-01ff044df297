@@ -1,28 +1,15 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .topnav {
-    overflow: hidden;
-    background-color:purple;
-    height:70px
-  }
-  
-  .topnav a {
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 30px;
-  }
-  
-
-  
-  .topnav a.active {
-    color: white;
-  }
-
-  .navcontent{
-      float:right;
-  }
+.navBarContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  font-family: system-ui;
+}
+.thing {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.thing:hover {
+  border-bottom: 1px solid rgb(26, 4, 4);
+}
