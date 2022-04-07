@@ -9,7 +9,7 @@ export class LoginService {
   constructor(private http: HttpClient) {
 
   }
-  checkUser(data: any) {
+  loginUser(data: any) {
     return this.http.post(`${baseUrl}/login`, data);
   }
 }
